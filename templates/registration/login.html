@@ -1,6 +1,17 @@
-<h2>Login</h2>
-    <form method="post">
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %} Seja bem vindo! {% endblock %}
+
+{% block main %}
+    <h2>Página de login</h2>
+    {% if user.is_authenticated %}
+        <p>Olá, {{ user.username }}</p>
+        <a href="{% url 'logout' %}" class="btn btn-secondary">Sair</a>
+    {% else %}
+        <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Enviar</button>
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-info">Enviar</button>
     </form>
+    {% endif %}
+{% endblock %}

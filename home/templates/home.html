@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-
-    <h1>Seja bem-vindo!</h1>
-
-    {% if user.is_authenticated %}
-        <p>Olá, {{ user.username }}</p>
-        <a href="{% url 'logout' %}">Sair</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %} Home {% endblock %}
+{% block main %}
+<div class="row">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col-6">
+      <h2>Seja bem vindo!</h2>
+    </div>
+    <div class="col">
+        {% if user.is_authenticated %}
+            <p>Olá, {{ user.username }}</p>
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Sair</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
