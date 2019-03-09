@@ -10,11 +10,13 @@
 
         </div>
         <div class="col-6">
+            <h3>Listagem de Clientes</h3>
+            <br>
             <ul class="list-group">
                 {% for person in persons %}
                     <li class="list-group-item">
                         <a href="{% url 'person_update' person.id %}">{{ person.first_name }}</a>&nbsp;
-                        <a href="{% url 'person_delete' person.id %}" class="glyphicon glyphicon-trash">
+                        <a href="{% url 'person_delete' person.id %}" class="trash-item">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </li>
@@ -26,7 +28,7 @@
         <div class="col">
             <p>
                 Olá, {{ user.username }}
-                <a href="{% url 'logout' %}" class="btn btn-secondary">Sair</a>
+                <a href="{% url 'logout' %}" class="badge badge-secondary">Sair</a>
             </p>
         </div>
     </div>
